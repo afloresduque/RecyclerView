@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="elpianista_descrip">Buenísima</string>
+    <string name="avatar_descrip">Buenísima</string>
+    <string name="forrestgump_descrip">Buenísima</string>
+    <string name="gladiator_descrip">Buenísima</string>
+    <string name="lalistadeschindler_descrip">Buenísima</string>
+    <string name="mejorimposible_descrip">Buenísima</string>
+
+</resources>
