@@ -11,12 +11,11 @@
 
         <ImageView
             android:id="@+id/idImagen"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="10dp"/>
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,14 +36,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Descripción"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="2dp"
         android:background="@color/colorSeparador"
         android:layout_marginTop="11dp"/>
 
