@@ -5,21 +5,28 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_buscar"
-        android:icon="@android:drawable/ic_menu_search"
+        android:id="@+id/accion_favoritos"
+        android:icon="@android:drawable/btn_star"
         android:orderInCategory="100"
         android:title="Buscar"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/accion_filtrar"
         android:icon="@android:drawable/ic_menu_sort_by_size"
         android:orderInCategory="100"
         android:title="Filtrar"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_nuevo"
+        android:id="@+id/accion_ordenar"
+        android:icon="@android:drawable/ic_menu_sort_alphabetically"
+        android:orderInCategory="100"
+        android:title="Ordenar A-Z"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/accion_nuevo"
         android:icon="@android:drawable/ic_menu_add"
         android:orderInCategory="100"
         android:title="Añadir"

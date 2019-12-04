@@ -1,6 +1,8 @@
 package com.example.recyclerview;
 
-public class PelisVO {
+import java.io.Serializable;
+
+public class PelisVO implements Serializable {
     private String titulo;
     private String descripcion;
     private String descripcionBreve;
