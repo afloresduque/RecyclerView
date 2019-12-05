@@ -5,46 +5,86 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/idImagen"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_marginTop="22dp"
             android:layout_marginRight="5dp"
             android:src="@mipmap/ic_launcher" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/idTitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:layout_marginTop="17dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/idDescripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descripción"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorSeparador"
-        android:layout_marginTop="11dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/idTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="Nombre"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/idGenero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genero"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/idDireccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Direccion"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/idDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripción"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"/>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
 </LinearLayout>

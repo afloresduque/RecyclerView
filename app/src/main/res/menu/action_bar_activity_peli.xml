@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/marcarFavorito"
+        android:icon="@android:drawable/btn_star"
+        android:title="Marcar como favorito"
+        app:showAsAction="always" /> <!--Para que se vea el icono sí o sí.-->
+
+    <item
+        android:id="@+id/compartir"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="Compartir"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/verWeb"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Ver en la Web..."
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/enviarCorreo"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Enviar por correo..."
+        app:showAsAction="always" />
+</menu>

@@ -7,17 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
-
-import static com.example.recyclerview.Utilidades.lista;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void llenarPelis() {
-        listPelis.add(new PelisVO("El Pianista",getResources().getString(R.string.elpianista_descripBreve),getResources().getString(R.string.elpianista_descrip),R.drawable.elpianista,"Drama"));
-        listPelis.add(new PelisVO("Avatar",getResources().getString(R.string.avatar_descripBreve),getResources().getString(R.string.avatar_descrip),R.drawable.avatar, "Cienciaficción"));
-        listPelis.add(new PelisVO("Forrest Gump",getResources().getString(R.string.forrestgump_descripBreve),getResources().getString(R.string.forrestgump_descrip),R.drawable.forrestgump, "Drama"));
-        listPelis.add(new PelisVO("Gladiator",getResources().getString(R.string.gladiator_descripBreve),getResources().getString(R.string.gladiator_descrip),R.drawable.gladiator,"Drama"));
-        listPelis.add(new PelisVO("La Lista de Schindler",getResources().getString(R.string.lalistadeschindler_descripBreve),getResources().getString(R.string.lalistadeschindler_descrip),R.drawable.lalistadeschindler, "Histórica"));
-        listPelis.add(new PelisVO("Mejor... Imposible",getResources().getString(R.string.mejorimposible_descripBreve),getResources().getString(R.string.mejorimposible_descrip),R.drawable.mejorimposible,"Comedia"));
+        listPelis.add(new PelisVO("El Pianista",getResources().getString(R.string.elpianista_descripBreve),getResources().getString(R.string.elpianista_descrip),R.drawable.elpianista,"Drama", "Roman Polański"));
+        listPelis.add(new PelisVO("Avatar",getResources().getString(R.string.avatar_descripBreve),getResources().getString(R.string.avatar_descrip),R.drawable.avatar, "Ciencia-Ficción", "James Cameron"));
+        listPelis.add(new PelisVO("Forrest Gump",getResources().getString(R.string.forrestgump_descripBreve),getResources().getString(R.string.forrestgump_descrip),R.drawable.forrestgump, "Drama", "Robert Zemeckis"));
+        listPelis.add(new PelisVO("Gladiator",getResources().getString(R.string.gladiator_descripBreve),getResources().getString(R.string.gladiator_descrip),R.drawable.gladiator,"Drama", "Ridley Scott"));
+        listPelis.add(new PelisVO("La Lista de Schindler",getResources().getString(R.string.lalistadeschindler_descripBreve),getResources().getString(R.string.lalistadeschindler_descrip),R.drawable.lalistadeschindler, "Histórica","Steven Spielberg"));
+        listPelis.add(new PelisVO("Mejor... Imposible",getResources().getString(R.string.mejorimposible_descripBreve),getResources().getString(R.string.mejorimposible_descrip),R.drawable.mejorimposible,"Comedia", "James L. Brooks"));
     }
 
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnLista: Utilidades.visualizacion= lista;
+            case R.id.btnLista: Utilidades.visualizacion= Utilidades.lista;
                 break;
             case R.id.btnGrid: Utilidades.visualizacion=Utilidades.grid;
                 break;
@@ -56,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
         listPelis = new ArrayList<PelisVO>();
         recyclerPelis = (RecyclerView) findViewById(R.id.RecyclerId);
 
-        if(Utilidades.visualizacion== lista){
+        if(Utilidades.visualizacion== Utilidades.lista){
             recyclerPelis.setLayoutManager(new LinearLayoutManager(this));
         }else{
-            recyclerPelis.setLayoutManager(new GridLayoutManager(this,3));
+            recyclerPelis.setLayoutManager(new GridLayoutManager(this,2));
         }
         llenarPelis();
 
@@ -99,8 +96,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //@Override
-    public boolean onOptionesItemsSelected(MenuItem peli) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem peli) {
+        //Log.d("onOptionesItemsSelected", "entra o no?");
         switch (peli.getItemId()){
             case R.id.accion_nuevo:
                 return true;

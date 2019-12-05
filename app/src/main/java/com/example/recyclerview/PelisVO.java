@@ -9,15 +9,26 @@ public class PelisVO implements Serializable {
     private int imagen;
     private String genero;
 
-    public PelisVO(String titulo, String descripcionBreve, String descripcion, int imagen, String genero) {
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    private String direccion;
+
+    public PelisVO(String titulo, String descripcionBreve, String descripcion, int imagen, String genero, String direccion) {
         this.titulo = titulo;
         this.descripcionBreve = descripcionBreve;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.genero = genero;
+        this.direccion = direccion;
     }
 
-    public PelisVO() {
+    public PelisVO(PelisVO pelisVO) {
     }
 
     public String getTitulo() {
