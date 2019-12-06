@@ -8,16 +8,10 @@ public class PelisVO implements Serializable {
     private String descripcionBreve;
     private int imagen;
     private String genero;
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     private String direccion;
+    private boolean favorito = false;
+
+
 
     public PelisVO(String titulo, String descripcionBreve, String descripcion, int imagen, String genero, String direccion) {
         this.titulo = titulo;
@@ -26,6 +20,16 @@ public class PelisVO implements Serializable {
         this.imagen = imagen;
         this.genero = genero;
         this.direccion = direccion;
+    }
+
+    public PelisVO(String titulo, String descripcionBreve, String descripcion, int imagen, String genero, String direccion, Boolean favorito) {
+        this.titulo = titulo;
+        this.descripcionBreve = descripcionBreve;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.genero = genero;
+        this.direccion = direccion;
+        this.favorito = favorito;
     }
 
     public PelisVO(PelisVO pelisVO) {
@@ -71,5 +75,13 @@ public class PelisVO implements Serializable {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    public boolean isFavorito() {        return favorito;    }
+
+    public void setFavorito(boolean favorito) {        this.favorito = favorito;    }
+
+    public String getDireccion() {        return direccion;    }
+
+    public void setDireccion(String direccion) {        this.direccion = direccion;    }
 
 }

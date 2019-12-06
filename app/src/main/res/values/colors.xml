@@ -3,5 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorSeparador">#069465</color>
+    <color name="colorSeparador">#0DB0BE</color>
+    <color name="fondoTurquesa">#D4F6F9</color>
+    <color name="botones">#54DCE8</color>
 </resources>

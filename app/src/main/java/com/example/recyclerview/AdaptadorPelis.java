@@ -80,4 +80,12 @@ public class AdaptadorPelis
         }
 
     }
+
+    public ArrayList<PelisVO> getListaPelis() {
+        return listaPelis;
+    }
+
+    public void setListaPelis(ArrayList<PelisVO> listaPelis) {
+        this.listaPelis = listaPelis;
+    }
 }

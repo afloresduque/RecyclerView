@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/aceptarCrearSeta"
+        android:icon="@drawable/tick"
+        android:title="Añadir"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/cancelarCrearSeta"
+        android:icon="@drawable/cancel"
+        android:title="Cancelar"
+        app:showAsAction="always" />
+
+</menu>

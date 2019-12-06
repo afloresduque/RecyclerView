@@ -13,4 +13,7 @@
     <string name="gladiator_descripBreve">Máximo, general romano, desea volver a casa, pero el emperador Marco Aurelio quiere que herede el imperio. Esto hace que Cómodo ordene matar a su familia. Máximo escapa de la muerte y regresa a Roma como gladiador para vengar la muerte de su familia.</string>
     <string name="lalistadeschindler_descripBreve">El industrialista alemán Oskar Schindler (Liam Neeson) urde un plan con su contador (Ben Kingsley) para rescatar prisioneros judíos de los nazis.</string>
     <string name="mejorimposible_descripBreve">Melvin Udall, un escritor obsesivo y maniático, es uno de los seres más desagradables que se puede tener como vecino. Pero, un buen día, tiene que hacerse cargo de un perro al que odia a muerte y su presencia le ablandará el corazón.</string>
+    <string name="anadidoFavorito">Peli añadida a favoritas</string>
+    <string name="eliminadaFavorito">Peli eliminada de favoritas</string>
+    <string name="noHayFavoritos">No hay pelis añadidas a favoritas</string>
 </resources>

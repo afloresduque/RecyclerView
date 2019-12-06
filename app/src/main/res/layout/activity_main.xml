@@ -8,31 +8,40 @@
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <Button
-            android:id="@+id/btnLista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lista"
-            android:layout_weight="1"
-            android:onClick="onClick"/>
+    tools:context=".MainActivity"
+    android:background="@color/fondoTurquesa">
 
-        <Button
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <ImageButton
+            android:id="@+id/btnLista"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:onClick="onClick"
+            android:src="@drawable/lista"
+            android:scaleType="centerInside"
+            android:background="@color/fondoTurquesa"
+            android:text="Lista" />
+
+        <ImageButton
             android:id="@+id/btnGrid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grid"
-            android:layout_weight="1"
-            android:onClick="onClick"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:background="@color/fondoTurquesa"
+            android:onClick="onClick"
+            android:scaleType="centerInside"
+            android:src="@drawable/grid"
+            android:text="Grid" />
 
     </LinearLayout>
-    
+
 
     <!--<TextView
         android:layout_width="380dp"

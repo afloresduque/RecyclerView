@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -20,18 +21,17 @@ public class Peli extends AppCompatActivity {
     TextView tvDescripcion;
     TextView tvGenero;
     TextView tvDireccion;
-
+    PelisVO peliAbierta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peli);
 
-        ArrayList<PelisVO> listaPelis;
-
+        ArrayList<PelisVO> listaPelis = new ArrayList<PelisVO>();
         listaPelis = (ArrayList<PelisVO>) getIntent().getSerializableExtra("lista");
         int peliculaAbierta =Integer.parseInt(getIntent().getSerializableExtra("Peli").toString());
-        PelisVO peliAbierta = new PelisVO(listaPelis.get(peliculaAbierta));
+        peliAbierta = listaPelis.get(peliculaAbierta);
 
 
         ivImagen = (ImageView) findViewById(R.id.idImagen);
@@ -47,12 +47,13 @@ public class Peli extends AppCompatActivity {
         tvDireccion.setText("Dirección: " + peliAbierta.getDireccion());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        tituloActionBar(peliAbierta.getTitulo());
+        personalizarTituloBarra(peliAbierta.getTitulo());
+       // Log.d("onCreate", peliAbierta.getTitulo());
     }
 
-    private void tituloActionBar(String titulo) {
-        ActionBar barraSuperior = getSupportActionBar();
-        barraSuperior.setTitle(titulo);
+    private void personalizarTituloBarra(String titulo) {
+        ActionBar barra = getSupportActionBar();
+        barra.setTitle(titulo);
     }
 
     @Override
@@ -75,11 +76,10 @@ public class Peli extends AppCompatActivity {
         switch (id) {
 
             case R.id.marcarFavorito:
-               /* if (!setaRecibida.getFavorito()) {
-                    GestorFavoritos.anadirAFavoritos(setaRecibida, getApplicationContext());
-                } else if (setaRecibida.getFavorito()){
-                    GestorFavoritos.eliminarDeFavoritos(setaRecibida, getApplicationContext());
-                }*/
+                GestionarFavoritos.cambiarFavoritos(peliAbierta, getApplicationContext());
+                if(peliAbierta.isFavorito())
+                    peli.setIcon(R.drawable.star);
+                else peli.setIcon(R.drawable.starvacia);
                 return true;
 
             case R.id.compartir:

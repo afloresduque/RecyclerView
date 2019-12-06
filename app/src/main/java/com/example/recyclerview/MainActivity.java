@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<PelisVO> listPelis;
     RecyclerView recyclerPelis;
     boolean order=false;
+    AdaptadorPelis adapter;
+    boolean mostrandoFavoritos = false;
+    //Button favorito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }
         llenarPelis();
 
-        AdaptadorPelis adapter = new AdaptadorPelis(listPelis);
+        adapter = new AdaptadorPelis(listPelis);
 
         if (order){
             Collections.sort(listPelis, new CustomComparator());
@@ -83,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerPelis.setAdapter(adapter);
     }
 
+
     public class CustomComparator extends Random implements Comparator<PelisVO> {
         @Override
         public int compare(PelisVO p1, PelisVO p2){
@@ -101,10 +107,25 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("onOptionesItemsSelected", "entra o no?");
         switch (peli.getItemId()){
             case R.id.accion_nuevo:
+                Intent nueva = new Intent(this, NuevaPeli.class);
+                startActivityForResult(nueva, 2);
                 return true;
             case R.id.accion_filtrar:
                 return true;
             case R.id.accion_favoritos:
+                if (!mostrandoFavoritos){
+                    adapter.setListaPelis(GestionarFavoritos.listaFavoritos);
+                    adapter.notifyDataSetChanged();
+                    recyclerPelis.setAdapter(adapter);
+                    mostrandoFavoritos=true;
+                    peli.setIcon(R.drawable.star);
+                    if(GestionarFavoritos.listaFavoritos.size()==0)
+                        Toast.makeText(this, R.string.noHayFavoritos, Toast.LENGTH_SHORT).show();
+                }else{
+                    construirRecycler(order);
+                    peli.setIcon(R.drawable.starvacia);
+                    mostrandoFavoritos=false;
+                }
                 return true;
             case R.id.accion_ordenar:
                 order = !order;

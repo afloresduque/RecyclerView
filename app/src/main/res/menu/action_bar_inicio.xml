@@ -6,30 +6,31 @@
 
     <item
         android:id="@+id/accion_favoritos"
-        android:icon="@android:drawable/btn_star"
-        android:orderInCategory="100"
+        android:icon="@drawable/starvacia"
+        android:orderInCategory="101"
         android:title="Buscar"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/accion_filtrar"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="Filtrar"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/accion_ordenar"
         android:icon="@android:drawable/ic_menu_sort_alphabetically"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="Ordenar A-Z"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/accion_nuevo"
         android:icon="@android:drawable/ic_menu_add"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="Añadir"
         app:showAsAction="ifRoom" />
+
 
 </menu>
