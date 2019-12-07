@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoTurquesa">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="Elige los géneros que quieres ver:"
+        android:textSize="20dp" />
+
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginTop="50dp">
+
+        <CheckBox
+            android:id="@+id/cbDrama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drama"
+            android:layout_gravity="left" />
+        <CheckBox
+            android:id="@+id/cbCiencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ciencia-ficción"
+            android:layout_gravity="center"/>
+        <CheckBox
+            android:id="@+id/cbComedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comedia"
+            android:layout_gravity="center"/>
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+        <CheckBox
+            android:id="@+id/cbHistorica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Histórica"
+            android:layout_gravity="center"/>
+        <CheckBox
+            android:id="@+id/cbTerror"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terror"
+            android:layout_gravity="center"/>
+        <CheckBox
+            android:id="@+id/cbSuspense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suspense"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+        <CheckBox
+            android:id="@+id/cbAccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acción"
+            android:layout_gravity="center"/>
+        <CheckBox
+            android:id="@+id/cbAventuras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aventuras"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnValidar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:onClick="btValidar_onClick"
+        android:text="Filtrar" />
+
+</LinearLayout>

@@ -29,9 +29,14 @@ public class Peli extends AppCompatActivity {
         setContentView(R.layout.activity_peli);
 
         ArrayList<PelisVO> listaPelis = new ArrayList<PelisVO>();
+
         listaPelis = (ArrayList<PelisVO>) getIntent().getSerializableExtra("lista");
-        int peliculaAbierta =Integer.parseInt(getIntent().getSerializableExtra("Peli").toString());
-        peliAbierta = listaPelis.get(peliculaAbierta);
+
+        //int peliculaAbierta =Integer.parseInt(getIntent().getSerializableExtra("Peli").toString());
+        peliAbierta = (PelisVO) getIntent().getSerializableExtra("Peli");
+        if(peliAbierta.isFavorito()){
+            //R.layout.activity_bar_activity_peli.menu.item setIcon(R.drawable.star);
+        }
 
 
         ivImagen = (ImageView) findViewById(R.id.idImagen);

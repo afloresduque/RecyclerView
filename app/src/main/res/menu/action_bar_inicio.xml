@@ -5,31 +5,35 @@
     tools:context=".MainActivity">
 
     <item
+        android:id="@+id/accion_volverAcargar"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="Recargar"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/accion_favoritos"
-        android:icon="@drawable/starvacia"
+        android:icon="@android:drawable/btn_star"
         android:orderInCategory="101"
         android:title="Buscar"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/accion_filtrar"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:orderInCategory="101"
-        android:title="Filtrar"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/accion_ordenar"
-        android:icon="@android:drawable/ic_menu_sort_alphabetically"
-        android:orderInCategory="101"
-        android:title="Ordenar A-Z"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/accion_nuevo"
         android:icon="@android:drawable/ic_menu_add"
         android:orderInCategory="101"
         android:title="Añadir"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/accion_ordenar"
+        android:icon="@android:drawable/ic_menu_sort_alphabetically"
+        android:orderInCategory="101"
+        android:title="Ordenar A-Z"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/accion_filtrar"
+        android:icon="@drawable/filtro"
+        android:orderInCategory="101"
+        android:title="Filtrar"
         app:showAsAction="ifRoom" />
 
 

@@ -1,48 +1,62 @@
 package com.example.recyclerview;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Switch;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NuevaPeli extends AppCompatActivity {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class NuevaPeli extends AppCompatActivity implements Serializable {
 
     ImageView image;
     EditText etTitulo, etGenero, etDireccion, etDescripcionBreve, etDescripcion;
     Switch sfavorita;
     private int PICK_IMAGE = 300;
+    Uri uri = Uri.parse("");
+    Spinner spinnerGenero;
+    ArrayAdapter<String> spiAdapter;
+    List<String> generos = Arrays.asList("Género:","Drama","Ciencia-ficcion","Comedia","Historica","Terror","Suspense","Accion","Aventura");
+
 
     protected void onCreate(Bundle saveInstanceState){
-        Log.e("onOptionesItemsSelected", "entra o no?");
+        //Log.e("onOptionesItemsSelected", "entra o no?");
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_nueva_peli);
 
         image = findViewById(R.id.imageViewAdd);
         etTitulo = findViewById(R.id.etTitulo);
-        etGenero = findViewById(R.id.etGenero);
+        //etGenero = findViewById(R.id.etGenero);
         etDireccion = findViewById(R.id.etDireccion);
         etDescripcionBreve = findViewById(R.id.etDescripcionBreve);
         etDescripcion = findViewById(R.id.etDescripcion);
         sfavorita = findViewById(R.id.favoritaSwitch);
+        spinnerGenero = findViewById(R.id.spiGenero);
+
+        spiAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, generos);
+        spinnerGenero.setAdapter(spiAdapter);
 
         personalizarTituloBarra();
-
-        image = (ImageView)findViewById(R.id.idImagen);
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,16 +71,14 @@ public class NuevaPeli extends AppCompatActivity {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK){
-
-            if (data != null) {
-                Uri uri = data.getData();
+                uri = data.getData();
                 image.setImageURI(uri);
-            }
         }
     }
 
@@ -83,20 +95,36 @@ public class NuevaPeli extends AppCompatActivity {
         Bundle bundleDevolver = new Bundle();
 
         int id = item.getItemId();
+        String genero = spinnerGenero.getSelectedItem().toString();
+        Log.e("genero", String.valueOf(uri));
 
         switch (id) {
-            case R.id.aceptarCrearSeta:
-                //La imagen realmente no se pone, da igual qué selecciones ya que no he conseguido
-                //poder realmente pasarle la imagen a mi objeto.
+            case R.id.aceptarCrearPeli:
+                /*IMPOSIBLE pasarle la imagen de vuelva al Main
+                Lo he intentado pasando la uri, pasando String, pasando drawable, pasando bitmap..
+                no llega a recibir la imagen o da error cuando se pasa por parámetro al intent
+
+                Consigo que en la pantalla de nueva peli obtenga la imagen de la memoria externa,
+                sin embargo, la imagen no llega a almacenarse con el nuevo objeto.
+                 */
                 bundleDevolver.putSerializable("nuevaPeli", new PelisVO(etTitulo.getText().toString(),
                         etDescripcionBreve.getText().toString(), etDescripcion.getText().toString(),
-                        R.drawable.rollopeli, etGenero.getText().toString(),etDireccion.getText().toString(),
+                        uri.toString(), genero,etDireccion.getText().toString(),
                         sfavorita.isChecked()));
+
+                //Bitmap bitmap =((BitmapDrawable) image.getDrawable()).getBitmap();
                 intentDevolver.putExtras(bundleDevolver);
+                //String uriS = uri.toString();
+                //intentDevolver.putExtra("uri", uriS);
+                //intentDevolver.putExtra("imagen", bitmap);
+
+
+                Log.e("nuevapeli", String.valueOf(uri));
+
                 setResult(Activity.RESULT_OK, intentDevolver);
                 finish();
                 break;
-            case R.id.cancelarCrearSeta:
+            case R.id.cancelarCrearPeli:
                 setResult(Activity.RESULT_CANCELED);
                 finish();
                 break;
@@ -106,7 +134,7 @@ public class NuevaPeli extends AppCompatActivity {
 
     private void personalizarTituloBarra() {
         ActionBar barra = getSupportActionBar();
-        barra.setTitle(etTitulo.toString());
+        barra.setTitle("Datos de la nueva peli");
     }
 
 }

@@ -26,7 +26,8 @@
             android:src="@drawable/lista"
             android:scaleType="centerInside"
             android:background="@color/fondoTurquesa"
-            android:text="Lista" />
+            android:text="Lista"
+            android:layout_margin="5dp"/>
 
         <ImageButton
             android:id="@+id/btnGrid"
@@ -38,6 +39,7 @@
             android:onClick="onClick"
             android:scaleType="centerInside"
             android:src="@drawable/grid"
+            android:layout_margin="5dp"
             android:text="Grid" />
 
     </LinearLayout>

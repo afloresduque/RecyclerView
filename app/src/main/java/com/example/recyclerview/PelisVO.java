@@ -1,15 +1,17 @@
 package com.example.recyclerview;
 
+
 import java.io.Serializable;
 
 public class PelisVO implements Serializable {
     private String titulo;
     private String descripcion;
     private String descripcionBreve;
-    private int imagen;
+    private int imagen=0;
+    private String imagenU;
     private String genero;
     private String direccion;
-    private boolean favorito = false;
+    private boolean favorito;
 
 
 
@@ -27,6 +29,16 @@ public class PelisVO implements Serializable {
         this.descripcionBreve = descripcionBreve;
         this.descripcion = descripcion;
         this.imagen = imagen;
+        this.genero = genero;
+        this.direccion = direccion;
+        this.favorito = favorito;
+    }
+
+    public PelisVO(String titulo, String descripcionBreve, String descripcion, String imagen, String genero, String direccion, Boolean favorito) {
+        this.titulo = titulo;
+        this.descripcionBreve = descripcionBreve;
+        this.descripcion = descripcion;
+        this.imagenU = imagen;
         this.genero = genero;
         this.direccion = direccion;
         this.favorito = favorito;
@@ -83,5 +95,12 @@ public class PelisVO implements Serializable {
     public String getDireccion() {        return direccion;    }
 
     public void setDireccion(String direccion) {        this.direccion = direccion;    }
+    public String getImagenU() {
+        return imagenU;
+    }
+
+    public void setImagenU(String imagenU) {
+        this.imagenU = imagenU;
+    }
 
 }

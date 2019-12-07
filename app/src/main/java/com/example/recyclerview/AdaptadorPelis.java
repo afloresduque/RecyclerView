@@ -1,6 +1,8 @@
 package com.example.recyclerview;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,7 +49,25 @@ public class AdaptadorPelis
         if(Utilidades.visualizacion==Utilidades.lista){
             holder.etiDescripcionBreve.setText(listaPelis.get(position).getDescripcionBreve());
         }
-        holder.etiImagen.setImageResource(listaPelis.get(position).getImagen());
+
+        if(listaPelis.get(position).getImagen()>0) {
+            holder.etiImagen.setImageResource(listaPelis.get(position).getImagen());
+            Log.e("adaptadorpelisnormales", String.valueOf(listaPelis.get(position).getImagen()));
+        }else {
+
+           Picasso.get()
+                    .load(Uri.parse(listaPelis.get(position).getImagenU()))
+                    .resize(10,10)
+                   .centerCrop()
+                    .error(R.drawable.rollopeli)
+                    .into(holder.etiImagen);
+           Log.e("adaptador", listaPelis.get(position).getImagenU());
+            //holder.etiImagen.setImageURI(Uri.parse(listaPelis.get(position).getImagenU()));
+        }
+
+
+
+
     }
 
     @Override

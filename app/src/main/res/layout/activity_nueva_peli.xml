@@ -18,7 +18,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            app:srcCompat="@drawable/rollopeli" />
+            app:srcCompat="@drawable/rollopeli"
+            android:clickable="true"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -34,40 +35,46 @@
                 android:id="@+id/etTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textSize="14sp"
-                android:textStyle="italic" />
-
-
-            <EditText
-                android:id="@+id/etGenero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:ems="10"
+                android:hint="Título"
                 android:inputType="textPersonName"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Dirección"
                 android:inputType="textPersonName" />
+
+
+            <!--<EditText
+                android:id="@+id/etGenero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Género"
+                android:inputType="textPersonName"
+                android:textSize="18sp"
+                android:textStyle="normal" />-->
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="¿Es favorita?" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageButton
+               <!-- <ImageButton
                     android:id="@+id/button"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -76,7 +83,13 @@
                     android:scaleType="centerInside"
                     android:src="@drawable/search"
                     android:layout_gravity="left"
-                    android:text="Button" />
+                    android:text="Button" />-->
+
+                <Spinner
+                    android:id="@+id/spiGenero"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.8"/>
 
                 <Switch
                     android:id="@+id/favoritaSwitch"
@@ -93,35 +106,37 @@
     </LinearLayout>
 
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="52dp">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:gravity="start"
-        android:orientation="vertical">
+        android:layout_height="344dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="52dp">
 
-
-        <EditText
-            android:id="@+id/etDescripcionBreve"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:inputType="textMultiLine" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:inputType="textMultiLine" />
 
-    </LinearLayout>
-</ScrollView>
+            <EditText
+                android:id="@+id/etDescripcionBreve"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Sinopsis"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/etDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Argumento"
+                android:inputType="textMultiLine" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

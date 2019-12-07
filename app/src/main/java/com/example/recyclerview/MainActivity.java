@@ -5,10 +5,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -20,28 +24,31 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<PelisVO> listPelis;
+    ArrayList<PelisVO> listPelis = new ArrayList<PelisVO>();
+    ArrayList<PelisVO> listaPelisFiltrada = new ArrayList<>();
     RecyclerView recyclerPelis;
     boolean order=false;
     AdaptadorPelis adapter;
     boolean mostrandoFavoritos = false;
+    private MenuItem securedConnection;
     //Button favorito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        llenarPelis();
         construirRecycler(order);
     }
 
     private void llenarPelis() {
-        listPelis.add(new PelisVO("El Pianista",getResources().getString(R.string.elpianista_descripBreve),getResources().getString(R.string.elpianista_descrip),R.drawable.elpianista,"Drama", "Roman Polański"));
-        listPelis.add(new PelisVO("Avatar",getResources().getString(R.string.avatar_descripBreve),getResources().getString(R.string.avatar_descrip),R.drawable.avatar, "Ciencia-Ficción", "James Cameron"));
-        listPelis.add(new PelisVO("Forrest Gump",getResources().getString(R.string.forrestgump_descripBreve),getResources().getString(R.string.forrestgump_descrip),R.drawable.forrestgump, "Drama", "Robert Zemeckis"));
-        listPelis.add(new PelisVO("Gladiator",getResources().getString(R.string.gladiator_descripBreve),getResources().getString(R.string.gladiator_descrip),R.drawable.gladiator,"Drama", "Ridley Scott"));
-        listPelis.add(new PelisVO("La Lista de Schindler",getResources().getString(R.string.lalistadeschindler_descripBreve),getResources().getString(R.string.lalistadeschindler_descrip),R.drawable.lalistadeschindler, "Histórica","Steven Spielberg"));
-        listPelis.add(new PelisVO("Mejor... Imposible",getResources().getString(R.string.mejorimposible_descripBreve),getResources().getString(R.string.mejorimposible_descrip),R.drawable.mejorimposible,"Comedia", "James L. Brooks"));
+        listPelis.add(new PelisVO(getResources().getString(R.string.elpianista_titulo),getResources().getString(R.string.elpianista_descripBreve),getResources().getString(R.string.elpianista_descrip),R.drawable.elpianista,getResources().getString(R.string.elpianista_genero), getResources().getString(R.string.elpianista_direccion)));
+        listPelis.add(new PelisVO(getResources().getString(R.string.avatar_titulo),getResources().getString(R.string.avatar_descripBreve),getResources().getString(R.string.avatar_descrip),R.drawable.avatar, getResources().getString(R.string.avatar_genero), getResources().getString(R.string.avatar_direccion)));
+        listPelis.add(new PelisVO(getResources().getString(R.string.forrestgump_titulo),getResources().getString(R.string.forrestgump_descripBreve),getResources().getString(R.string.forrestgump_descrip),R.drawable.forrestgump, getResources().getString(R.string.forrestgump_genero), getResources().getString(R.string.forrestgump_direccion)));
+        listPelis.add(new PelisVO(getResources().getString(R.string.gladiator_titulo),getResources().getString(R.string.gladiator_descripBreve),getResources().getString(R.string.gladiator_descrip),R.drawable.gladiator,getResources().getString(R.string.gladiator_genero), getResources().getString(R.string.gladiator_direccion)));
+        listPelis.add(new PelisVO(getResources().getString(R.string.lalistadeschindler_titulo),getResources().getString(R.string.lalistadeschindler_descripBreve),getResources().getString(R.string.lalistadeschindler_descrip),R.drawable.lalistadeschindler, getResources().getString(R.string.lalistadeschindler_genero),getResources().getString(R.string.lalistadeschindler_direccion)));
+        listPelis.add(new PelisVO(getResources().getString(R.string.mejorimposible_titulo),getResources().getString(R.string.mejorimposible_descripBreve),getResources().getString(R.string.mejorimposible_descrip),R.drawable.mejorimposible,getResources().getString(R.string.mejorimposible_genero), getResources().getString(R.string.mejorimposible_direccion)));
+        listPelis.add(new PelisVO(getResources().getString(R.string.lavidaesbella_titulo),getResources().getString(R.string.lavidaesbella_descripBreve),getResources().getString(R.string.lavidaesbella_descrip),R.drawable.lavidaesbella,getResources().getString(R.string.lavidaesbella_genero),getResources().getString(R.string.lavidaesbella_direccion)));
     }
 
     public void onClick(View view) {
@@ -55,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void construirRecycler(boolean order) {
-        listPelis = new ArrayList<PelisVO>();
         recyclerPelis = (RecyclerView) findViewById(R.id.RecyclerId);
 
         if(Utilidades.visualizacion== Utilidades.lista){
@@ -63,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         }else{
             recyclerPelis.setLayoutManager(new GridLayoutManager(this,2));
         }
-        llenarPelis();
 
         adapter = new AdaptadorPelis(listPelis);
 
@@ -80,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                intentPeli.putExtra("lista", listPelis);
-                intentPeli.putExtra("Peli", String.valueOf(recyclerPelis.getChildAdapterPosition(v)));
+                intentPeli.putExtra("lista", adapter.getListaPelis());
+                intentPeli.putExtra("Peli", adapter.getListaPelis().get(recyclerPelis.getChildAdapterPosition(v)));
                 startActivity(intentPeli);
             }
         });
@@ -99,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
         getMenuInflater().inflate(R.menu.action_bar_inicio, menu);
+        securedConnection = menu.getItem(0);
         return true;
     }
 
@@ -110,31 +116,96 @@ public class MainActivity extends AppCompatActivity {
                 Intent nueva = new Intent(this, NuevaPeli.class);
                 startActivityForResult(nueva, 2);
                 return true;
+
             case R.id.accion_filtrar:
+                Intent filtrar = new Intent(this, PantallaFiltrar.class);
+                startActivityForResult(filtrar, 3);
                 return true;
+
             case R.id.accion_favoritos:
                 if (!mostrandoFavoritos){
                     adapter.setListaPelis(GestionarFavoritos.listaFavoritos);
                     adapter.notifyDataSetChanged();
-                    recyclerPelis.setAdapter(adapter);
                     mostrandoFavoritos=true;
                     peli.setIcon(R.drawable.star);
                     if(GestionarFavoritos.listaFavoritos.size()==0)
                         Toast.makeText(this, R.string.noHayFavoritos, Toast.LENGTH_SHORT).show();
                 }else{
-                    construirRecycler(order);
+                    adapter.setListaPelis(listPelis);
+                    adapter.notifyDataSetChanged();
+                    recyclerPelis.setAdapter(adapter);
                     peli.setIcon(R.drawable.starvacia);
                     mostrandoFavoritos=false;
                 }
                 return true;
+
             case R.id.accion_ordenar:
                 order = !order;
                 construirRecycler(order);
                 return true;
+
+            case R.id.accion_volverAcargar:
+                construirRecycler(order);
+                securedConnection.setVisible(false);
+                return true;
+
+
             default:
                 return super.onOptionsItemSelected(peli);
 
         }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if (resultCode == Activity.RESULT_OK && requestCode==2) {
+
+                    PelisVO nuevaPeli = (PelisVO) data.getSerializableExtra("nuevaPeli");
+
+                    //Log.e("onOptionesItemsSelected", "prueba");
+                    //String ruta = data.getStringExtra("uri");
+                    //nuevaPeli.setImagenU((Uri) ruta);
+                    //nuevaPeli.setImagenD((Drawable) data.getSerializableExtra("imagen"));
+
+                    if(nuevaPeli.isFavorito()){
+                        GestionarFavoritos.listaFavoritos.add(nuevaPeli);
+                    }
+
+                    //Log.e("eeeeeeeeeeeeeee", nuevaPeli.getImagenU());
+                    //Log.e("eeeeeeeeeeeeeee", nuevaPeli.getImagenU().toString());
+
+                    listPelis.add(nuevaPeli);
+                    adapter.notifyDataSetChanged();
+                    //recyclerPelis.setAdapter(adapter);
+                }
+                else if(resultCode == Activity.RESULT_OK && requestCode==3){
+                    ArrayList<String> generos = (ArrayList<String>) data.getSerializableExtra("generos");
+                    //Toast.makeText(this, generos.get(0), Toast.LENGTH_LONG).show();
+                    int tmaaño = generos.size();
+                    if(generos.size()==1)
+                        Toast.makeText(this,generos.get(0), Toast.LENGTH_LONG).show();
+                    listaPelisFiltrada.removeAll(listaPelisFiltrada);
+
+                    for(int i=0;i<listPelis.size();i++){
+
+                        for(int j=0;j<generos.size();j++){
+
+                            if(listPelis.get(i).getGenero().equals(generos.get(j))){
+                                listaPelisFiltrada.add(listPelis.get(i));
+                            }
+                        }
+                    }
+
+                    if(listaPelisFiltrada.isEmpty()){
+                        Toast.makeText(this,"No hay películas de ese género", Toast.LENGTH_LONG).show();
+                    }
+                    securedConnection.setVisible(true);
+                    adapter.setListaPelis(listaPelisFiltrada);
+                    adapter.notifyDataSetChanged();
+                }
+
+                else {
+                    recyclerPelis.setAdapter(adapter);
+                }
     }
 
 
